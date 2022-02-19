@@ -64,6 +64,9 @@ public class setYearGoalActivity extends AppCompatActivity{
                     System.out.println(movieGoal);
                     System.out.println(tvGoal);
                     Intent intent = new Intent(setYearGoalActivity.this, MainActivity.class);
+                    intent.putExtra("bookGoal_key", bookGoal);
+                    intent.putExtra("movieGoal_key", movieGoal);
+                    intent.putExtra("tvGoal_key", tvGoal);
                     startActivity(intent);
                 }
             }

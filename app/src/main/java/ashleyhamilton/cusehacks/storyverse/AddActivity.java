@@ -12,7 +12,8 @@ import android.widget.RadioGroup;
 
 public class AddActivity extends AppCompatActivity{
     boolean favoriteStatus = false;
-    int typeCode;
+    String content = "Book";
+    String favor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,18 +42,27 @@ public class AddActivity extends AppCompatActivity{
                 else if(view.getId() == R.id.add){
                     String saveName = name.getText().toString();
                     if(radioBook.isChecked()){
-                        typeCode=0;
+                        content="Book";
                     }
                     else if(radioMovie.isChecked()){
-                        typeCode=1;
+                        content="Movie";
                     }
                     else if(radioTV.isChecked()){
-                        typeCode=2;
+                        content="TV";
                     }
                     System.out.println(saveName);
-                    System.out.println(typeCode);
+                    System.out.println(content);
                     System.out.println(favoriteStatus);
                     Intent intent = new Intent(AddActivity.this, MainActivity.class);
+                    intent.putExtra("saveName_key", saveName);
+                    intent.putExtra("content_key", content);
+                    if(favoriteStatus){
+                        favor="1";  //is a favorite
+                    }
+                    else{
+                        favor="";
+                    }
+                    intent.putExtra("favor_key", favor);
                     startActivity(intent);
                 }
             }

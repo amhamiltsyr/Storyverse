@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Dictionary;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
     private int yearProgressTV;
     private int yearGoalMovies;
     private int yearGoalTV;
+    private String[][] total;
+    private int currentIndexTotal;
+    private String[][] favorite;
+    private int currentIndexFavorite;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +37,36 @@ public class MainActivity extends AppCompatActivity {
             yearProgressTV=0;
             yearGoalMovies=0;
             yearGoalTV=0;
+            favorite= new String[100][3];
+            total=new String[100][3];
+        }
+        Intent intent = getIntent();
+        if(intent.getExtras()!=null){
+            System.out.println("happening");
+            if(intent.getStringExtra("favor_key").equals("1")) {
+                // is a favorite
+                favorite[currentIndexFavorite][0] = intent.getStringExtra("saveName_key");
+                favorite[currentIndexFavorite][1] = intent.getStringExtra("content_key");
+                currentIndexFavorite++;
+                total[currentIndexTotal][0] = intent.getStringExtra("saveName_key");
+                total[currentIndexTotal][1] = intent.getStringExtra("content_key");
+                currentIndexTotal++;
+            }
+            else if(intent.getStringExtra("favor_key").equals("")){
+                //not a favorite
+                total[currentIndexTotal][0]=intent.getStringExtra("saveName_key");
+                total[currentIndexTotal][1]=intent.getStringExtra("content_key");
+                currentIndexTotal++;
+            }
+            if(intent.getStringExtra("content_key").equals("Book")){
+                yearProgressBooks++;
+            }
+            else if(intent.getStringExtra("content_key").equals("Movie")){
+                yearProgressMovies++;
+            }
+            if(intent.getStringExtra("content_key").equals("TV")){
+                yearProgressTV++;
+            }
         }
         setContentView(R.layout.activity_main);
         TextView yearGoalTracker=findViewById(R.id.yearGoalTracker);
