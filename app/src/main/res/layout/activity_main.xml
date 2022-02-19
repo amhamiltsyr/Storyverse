@@ -7,26 +7,47 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="#264653">
+    android:background="#293241">
 
-    <ImageButton
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="40dp"
+        android:id="@+id/add"
+        android:drawableLeft="@drawable/ic_baseline_add_24"
+        android:background="#ee6c4d"
+        android:padding="10dp"
+        android:text="Add a new title"
+        />
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="25sp"
-        android:layout_weight="1"
         android:layout_margin="10dp"
-        android:id="@+id/add"
-        android:src="@drawable/ic_baseline_add_24"
-        android:background="#2a9d8f"
-         />
+        android:id="@+id/yearGoalTracker"
+        android:background="#E0FBFC"
+        android:padding="10dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:id="@+id/setYearGoal"
+        android:background="#ee6c4d"
+        android:text="Edit Yearly Goals"
+        />
 
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".MainActivity"
     android:orientation="horizontal"
-    android:padding="20dp">
+    android:padding="20dp"
+        android:layout_margin="40dp">
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,7 +57,8 @@
             android:layout_margin="10dp"
             android:id="@+id/favorites"
             android:src="@drawable/ic_baseline_star_24"
-            android:background="#e9c46a"
+            android:background="#98C1D9"
+            android:padding="10dp"
             />
         <ImageButton
             android:layout_width="wrap_content"
@@ -47,7 +69,8 @@
             android:layout_margin="10dp"
             android:id="@+id/year"
             android:src="@drawable/ic_baseline_calendar_today_24"
-            android:background="#f4a261"
+            android:background="#3D5A80"
+            android:padding="10dp"
             />
         <ImageButton
             android:layout_width="wrap_content"
@@ -56,20 +79,10 @@
             android:textSize="25sp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:id="@+id/year"
-            android:src="@drawable/ic_baseline_calendar_today_24"
-            android:background="#002f6c"
-            />
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="25sp"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:id="@+id/year"
+            android:id="@+id/account"
             android:src="@drawable/ic_baseline_person_24"
-            android:background="#e76f51"
+            android:background="#98C1D9"
+            android:padding="10dp"
             />
     </LinearLayout>
 
