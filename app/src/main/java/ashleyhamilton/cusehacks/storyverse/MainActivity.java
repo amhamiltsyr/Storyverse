@@ -26,11 +26,37 @@ public class MainActivity extends AppCompatActivity {
         String toSet="Yearly Goal:\nBooks:\nMovies:\nTV:\n";
         yearGoalTracker.setText(toSet);
         Button add=findViewById(R.id.add);
-        ImageButton year=findViewById(R.id.favorites);
+        ImageButton favorites=findViewById(R.id.favorites);
+        ImageButton year=findViewById(R.id.year);
         ImageButton account=findViewById(R.id.account);
-
-
-
+        Button setYearGoal=findViewById(R.id.setYearGoal);
+        View.OnClickListener myListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v.getId() == R.id.add) {
+                    Intent intent = new Intent(MainActivity.this, AddActivity.class);
+                    startActivity(intent);
+                } else if (v.getId() == R.id.setYearGoal) {
+                    Intent intent = new Intent(MainActivity.this, setYearGoalActivity.class);
+                    startActivity(intent);
+                } else if (v.getId() == R.id.favorites) {
+                    Intent intent = new Intent(MainActivity.this, favoritesActivity.class);
+                    startActivity(intent);
+                } else if (v.getId() == R.id.year) {
+                    Intent intent = new Intent(MainActivity.this, yearActivity.class);
+                    startActivity(intent);
+                }
+                else if(v.getId()==R.id.account){
+                    Intent intent = new Intent(MainActivity.this, accountActivity.class);
+                    startActivity(intent);
+                }
+            }
+        };
+        add.setOnClickListener(myListener);
+        setYearGoal.setOnClickListener(myListener);
+        favorites.setOnClickListener(myListener);
+        year.setOnClickListener(myListener);
+        account.setOnClickListener(myListener);
 
 
     }
