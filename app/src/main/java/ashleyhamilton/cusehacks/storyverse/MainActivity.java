@@ -18,12 +18,22 @@ public class MainActivity extends AppCompatActivity {
     private int yearProgressBooks;
     private int yearProgressMovies;
     private int yearProgressTV;
+    private int yearGoalMovies;
+    private int yearGoalTV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState == null){
+            yearGoalBooks=0;
+            yearProgressBooks=0;
+            yearProgressMovies=0;
+            yearProgressTV=0;
+            yearGoalMovies=0;
+            yearGoalTV=0;
+        }
         setContentView(R.layout.activity_main);
         TextView yearGoalTracker=findViewById(R.id.yearGoalTracker);
-        String toSet="Yearly Goal:\nBooks:\nMovies:\nTV:\n";
+        String toSet="Yearly Goal:\nBooks: "+yearProgressBooks+"/"+yearGoalBooks+"\nMovies: "+yearProgressMovies+"/"+yearGoalMovies+"\nTV: "+yearProgressTV+"/"+yearGoalTV+"\n";
         yearGoalTracker.setText(toSet);
         Button add=findViewById(R.id.add);
         ImageButton favorites=findViewById(R.id.favorites);
