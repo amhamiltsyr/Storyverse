@@ -18,6 +18,9 @@ public class AddActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_layout);
+        ImageButton favorite = findViewById(R.id.favoriteSelect);
+        favorite.setImageResource(R.drawable.ic_baseline_star_outline_24);
+        EditText name=findViewById(R.id.name);
         RadioGroup type=findViewById(R.id.type);
         RadioButton radioBook = findViewById(R.id.radioBook);
         RadioButton radioMovie = findViewById(R.id.radioMovie);
@@ -26,7 +29,18 @@ public class AddActivity extends AppCompatActivity{
         View.OnClickListener myListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(view.getId() == R.id.add){
+                if(view.getId() == R.id.favoriteSelect){
+                    if(favoriteStatus){
+                        favoriteStatus=false;
+                        favorite.setImageResource(R.drawable.ic_baseline_star_outline_24);
+                    }
+                    else{
+                        favoriteStatus=true;
+                        favorite.setImageResource(R.drawable.ic_baseline_star_24);
+                    }
+                }
+                else if(view.getId() == R.id.add){
+                    String saveName = name.getText().toString();
                     if(radioBook.isChecked()){
                         content="Book";
                     }
@@ -36,9 +50,11 @@ public class AddActivity extends AppCompatActivity{
                     else if(radioTV.isChecked()){
                         content="TV";
                     }
+                    System.out.println(saveName);
                     System.out.println(content);
                     System.out.println(favoriteStatus);
                     Intent intent = new Intent(AddActivity.this, MainActivity.class);
+                    intent.putExtra("saveName_key", saveName);
                     intent.putExtra("content_key", content);
                     if(favoriteStatus){
                         favor="1";  //is a favorite
@@ -51,6 +67,7 @@ public class AddActivity extends AppCompatActivity{
                 }
             }
         };
+        favorite.setOnClickListener(myListener);
         add.setOnClickListener(myListener);
         type.setOnClickListener(myListener);
     }
